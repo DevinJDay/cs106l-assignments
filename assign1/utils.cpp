@@ -75,10 +75,12 @@ std::ostream &operator<<(std::ostream &os, const Course &course)
 }
 
 template <typename T>
-u
+concept is_valid_course = requires(T t) {
+    { T{"Standard C++ Programming", "1", "2023-2024 Winter"} };
+    std::is_same_v<T, Course>;
+};
 
-    int
-    run_autograder()
+int run_autograder()
 {
     auto run_program = [](std::string program, std::initializer_list<std::string> args)
     {
